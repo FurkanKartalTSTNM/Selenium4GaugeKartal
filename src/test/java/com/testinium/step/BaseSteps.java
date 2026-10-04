@@ -228,6 +228,15 @@ public class BaseSteps extends BaseTest {
         logger.info(url + " adresine gidiliyor.");
     }
 
+    @Step("Selenium container smoke testi çalıştır")
+    public void runSeleniumContainerSmokeTest() {
+        driver.get("data:text/html,<title>SeleniumSmoke</title><h1 id='status'>OK</h1>");
+
+        assertEquals("SeleniumSmoke", driver.getTitle());
+        assertEquals("OK", driver.findElement(By.id("status")).getText());
+        logger.info("Selenium container smoke testi başarıyla tamamlandı.");
+    }
+
     @Step({"Wait for element to load with css <css>",
             "Elementin yüklenmesini bekle css <css>"})
     public void waitElementLoadWithCss(String css) {
@@ -996,7 +1005,6 @@ public class BaseSteps extends BaseTest {
 
 
 }
-
 
 
 
